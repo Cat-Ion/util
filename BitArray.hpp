@@ -1,12 +1,31 @@
 #ifndef BITARRAY_HPP
 #define BITARRAY_HPP
 #include <cstddef>
+#include <type_traits>
 
-/** @brief BitArray is used to read or write single bits in an array */
+/** @brief BitArray is used to read or write single bits in an array
+ *
+ * @tparam T is any integral type that supports bitwise operations. BitArray
+ * is used to read or modify bits in an array of T.
+ *
+ * @details Usage example:
+ * @code{.cpp}
+uint16_t foo = 0x0042;
+BitArray<uint16_t> bar(&foo);
+if (bar[14]) { // true
+  bar[1] = bar[2] = true;
+  bar[14] = false;
+  // foo is now 0x3040
+}
+@endcode
+ */
 template<class T>
 class BitArray {
+    static_assert(std::is_integral<T>::value, "T must be integral");
+
 public:
-    /** @brief A writable reference to a single bit in an array */
+    /** @brief A writable reference to a single bit in an array. It is only
+     * valid as long as the parent BitArray is not deconstructed. */
     class reference {
         friend BitArray;
         constexpr reference(BitArray &parent, size_t pos) : parent(parent), pos(pos) {}
