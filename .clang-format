@@ -1,0 +1,26 @@
+---
+Language:        Cpp
+BasedOnStyle:  Mozilla
+AlwaysBreakAfterReturnType: None
+AccessModifierOffset: -4
+BraceWrapping:   
+  AfterEnum:       false
+  AfterFunction:   false
+  SplitEmptyRecord: true
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBraces: Custom
+BreakConstructorInitializers: BeforeColon
+ColumnLimit: 100
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: true
+FixNamespaceComments: true
+IncludeIsMainRegex: '(_?[T]est)?$'
+IndentCaseLabels: false
+IndentWidth:     4
+KeepEmptyLinesAtTheStartOfBlocks: false
+PointerAlignment: Right
+TabWidth:        4
+...
+
